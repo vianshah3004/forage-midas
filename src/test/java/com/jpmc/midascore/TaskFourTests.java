@@ -1,5 +1,6 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.model.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,8 @@ public class TaskFourTests {
             kafkaProducer.send(transactionLine);
         }
         Thread.sleep(2000);
+        User wilbur = userPopulator.getUser("wilbur");
+        logger.info("Waldorf balance: {}", wilbur.getBalance());
 
 
         logger.info("----------------------------------------------------------");

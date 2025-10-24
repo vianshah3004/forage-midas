@@ -2,6 +2,7 @@ package com.jpmc.midascore;
 
 import com.jpmc.midascore.component.DatabaseConduit;
 import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,5 +21,11 @@ public class UserPopulator {
             UserRecord user = new UserRecord(userData[0], Float.parseFloat(userData[1]));
             databaseConduit.save(user);
         }
+    }
+
+    public User getUser(String name) {
+        UserRecord record = databaseConduit.findByName(name)
+                .orElseThrow(() -> new RuntimeException("User not found: " + name));
+        return new User(record.getName(), record.getBalance());
     }
 }

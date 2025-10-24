@@ -1,5 +1,6 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.model.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,8 @@ public class TaskThreeTests {
         }
         Thread.sleep(2000);
 
+        User waldorf = userPopulator.getUser("waldorf");
+        logger.info("Waldorf balance: {}", waldorf.getBalance());
 
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");

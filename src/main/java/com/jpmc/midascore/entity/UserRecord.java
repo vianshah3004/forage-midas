@@ -3,29 +3,22 @@ package com.jpmc.midascore.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class UserRecord {
 
     @Id
-    @GeneratedValue()
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private float balance;
+    private double balance;
 
-    protected UserRecord() {
-    }
+    public UserRecord() { }
 
-    public UserRecord(String name, float balance) {
+    public UserRecord(String name, double balance) {
         this.name = name;
         this.balance = balance;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("User[id=%d, name='%s', balance='%f'", id, name, balance);
     }
 
     public Long getId() {
@@ -36,11 +29,15 @@ public class UserRecord {
         return name;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }
